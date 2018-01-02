@@ -37,15 +37,6 @@ RUN apt-get install -y \
 
 
 
-# install oh-my-zsh
-RUN curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh || true
-
-# push oh-my-zsh setting
-COPY .zshrc /root/.zshrc
-RUN dos2unix /root/.zshrc
-
-
-
 # GIT
 ARG GIT_USERNAME
 ARG GIT_EMAIL
@@ -73,6 +64,18 @@ ARG TERRAFORM_DOWNLOAD_URL=https://releases.hashicorp.com/terraform/${TERRAFORM_
 RUN wget $TERRAFORM_DOWNLOAD_URL -O terraform.zip \
         && unzip terraform.zip -d /usr/local/bin \
         && rm terraform.zip
+
+
+
+
+
+# install oh-my-zsh
+RUN curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh || true
+
+# push oh-my-zsh setting
+COPY .zshrc /root/.zshrc
+RUN dos2unix /root/.zshrc
+
 
 
 
