@@ -1,0 +1,19 @@
+version: "3.3"
+
+
+services: 
+
+### Workspace ###
+
+  workspace:
+    build:
+      context:  ./workspace
+      args:
+        - GIT_USERNAME=${GIT_USERNAME}
+        - GIT_EMAIL=${GIT_EMAIL}
+        - ANSIBLE_VERSION=${ANSIBLE_VERSION}
+    volumes:
+      - ${WORKSPACE}:/workspace
+    tty: true
+
+
