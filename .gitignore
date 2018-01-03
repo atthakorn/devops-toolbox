@@ -1,1 +1,3 @@
 .env
+workspace/ssh/id_rsa
+workspace/ssh/id_rsa.pub

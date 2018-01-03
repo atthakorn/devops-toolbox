@@ -11,18 +11,7 @@ RUN apt-get update && apt-get upgrade -y
 
 # install common packages
 RUN apt-get install -y \
-        build-essential \
-        gcc \
-        libssl-dev \
-        libffi-dev \
-        libxml2-dev \
-        libxslt1-dev \
-        zlib1g-dev \
-        python-dev \
-        python-novaclient \
-        python-neutronclient \
-        python-pip \
-        ca-certificates \
+        software-properties-common \
         openssl \
         command-not-found
 
@@ -55,7 +44,7 @@ RUN  apt-get install -y git git-extras \
 # ansible
 ARG ANSIBLE_VERSION=2.4.2.0-1ppa~xenial
 
-RUN  apt-get install -y software-properties-common \
+RUN  apt-get install -y  \
       && apt-add-repository ppa:ansible/ansible \
       && apt-get update \
       && apt-get install -y ansible=${ANSIBLE_VERSION}
@@ -84,6 +73,12 @@ RUN curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/instal
 COPY .zshrc /root/.zshrc
 RUN dos2unix /root/.zshrc
 
+
+# setup ssh key
+COPY ssh/id_rsa /root/.ssh/
+RUN chmod 400 ~/.ssh/id_rsa \
+      && eval $(ssh-agent -s) \
+      && ssh-add
 
 
 
