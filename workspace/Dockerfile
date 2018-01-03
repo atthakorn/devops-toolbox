@@ -13,7 +13,8 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y \
         software-properties-common \
         openssl \
-        command-not-found
+        command-not-found \
+        python
 
         
 
