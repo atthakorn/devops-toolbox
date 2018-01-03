@@ -9,35 +9,38 @@ RUN apt-get update && apt-get upgrade -y
 
 
 # install common packages
-RUN apt-get install -y build-essential \
+RUN apt-get install -y \
+        build-essential \
+        gcc \
         libssl-dev \
         libffi-dev \
-        gcc \
-        python-dev \
         libxml2-dev \
         libxslt1-dev \
         zlib1g-dev \
-        nmap \
-        zsh \
+        python-dev \
         python-novaclient \
         python-neutronclient \
         python-pip \
-        tree \
         ca-certificates \
-        openssl 
+        openssl \
+        command-not-found
+
         
 
 # install utility
 RUN apt-get install -y \
+        zsh \
         wget  \
         curl \
         man \
         dos2unix \
-        zip
+        zip \
+        nmap \
+        tree 
 
 
 
-# GIT
+# git
 ARG GIT_USERNAME
 ARG GIT_EMAIL
 
@@ -49,7 +52,6 @@ RUN  apt-get install -y git git-extras \
 
 
 # ansible
-
 ARG ANSIBLE_VERSION=2.4.2.0-1ppa~xenial
 
 RUN  apt-get install -y software-properties-common \
@@ -66,7 +68,12 @@ RUN wget $TERRAFORM_DOWNLOAD_URL -O terraform.zip \
         && rm terraform.zip
 
 
-
+# gcloud
+RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" \
+        && echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" |  tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
+        && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - \
+        && apt-get update \
+        && sudo apt-get install -y google-cloud-sdk
 
 
 # install oh-my-zsh
