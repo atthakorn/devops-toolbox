@@ -2,7 +2,8 @@
 FROM ubuntu:16.04
 LABEL maintainer="atthakorn@shareinvestor.com"
 
-
+# get rid of debian error 
+ARG DEBIAN_FRONTEND=noninteractive
 
 # update & upgrade repository
 RUN apt-get update && apt-get upgrade -y
@@ -71,9 +72,9 @@ RUN wget $TERRAFORM_DOWNLOAD_URL -O terraform.zip \
 # gcloud
 RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" \
         && echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" |  tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
-        && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - \
+        && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - \
         && apt-get update \
-        && sudo apt-get install -y google-cloud-sdk
+        && apt-get install -y google-cloud-sdk kubectl
 
 
 # install oh-my-zsh
