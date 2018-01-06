@@ -67,12 +67,23 @@ RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" \
         && apt-get install -y google-cloud-sdk kubectl
 
 
+
 # install oh-my-zsh
 RUN curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh || true
 
 # push oh-my-zsh setting
 COPY .zshrc /root/.zshrc
 RUN dos2unix /root/.zshrc
+
+
+
+
+# autojump
+RUN apt-get install -y autojump \
+      && echo "\n. /usr/share/autojump/autojump.sh" >> /root/.zshrc
+
+
+
 
 
 # setup ssh key
