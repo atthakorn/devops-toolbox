@@ -87,10 +87,11 @@ RUN apt-get install -y autojump \
 
 
 # setup ssh key
-COPY ssh/id_rsa /root/.ssh/
+COPY ssh/id_rsa ssh/config /root/.ssh/
 RUN chmod 400 ~/.ssh/id_rsa \
       && eval $(ssh-agent -s) \
       && ssh-add
+       
 
 
 
