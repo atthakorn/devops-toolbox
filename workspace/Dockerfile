@@ -27,7 +27,8 @@ RUN apt-get install -y \
         dos2unix \
         zip \
         nmap \
-        tree 
+        tree \
+        apache2-utils
 
 
 
