@@ -44,12 +44,10 @@ RUN  apt-get install -y git git-extras \
 
 
 # ansible
-ARG ANSIBLE_VERSION=2.4.2.0-1ppa~xenial
-
 RUN  apt-get install -y  \
       && apt-add-repository ppa:ansible/ansible \
       && apt-get update \
-      && apt-get install -y ansible=${ANSIBLE_VERSION}
+      && apt-get install -y ansible
 
 
 # terraform
