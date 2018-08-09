@@ -1,6 +1,6 @@
 
 FROM ubuntu:16.04
-LABEL maintainer="atthakorn@shareinvestor.com"
+LABEL maintainer="atthakorn@gmail.com"
 
 # get rid of debian error 
 ARG DEBIAN_FRONTEND=noninteractive
