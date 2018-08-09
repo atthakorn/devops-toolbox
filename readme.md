@@ -23,8 +23,8 @@ These are batteries included
 WORKSPACE=../..
 
 # Workspace
-GIT_USERNAME=atthakorn
-GIT_EMAIL=atthakorn@gmail.com
+GIT_USERNAME=username
+GIT_EMAIL=username@gmail.com
 
 ```
 
