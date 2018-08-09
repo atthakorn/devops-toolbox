@@ -1,5 +1,5 @@
 # devops-toolbox
-The sandbox environment for devops / automation running in docker container. 
+The sandbox environment for devops & automation running in docker container. 
 
 These are batteries included
 * git
