@@ -28,7 +28,7 @@ GIT_EMAIL=atthakorn@gmail.com
 
 ```
 
-- Just run this command to get toolbok up and running
+- Just run this command to get toolbox up and running
 
 ``` bash
 docker-compose up -d
