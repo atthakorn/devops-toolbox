@@ -9,13 +9,13 @@ These are battery included
 * oh-my-zsh
 
 
-# Installation
+## Installation
 
 - Download into local directory
 - Make a copy of `.env.example` and rename file to `.env`
 - Update your local configuration of environment 
 
-```env
+```ini
 # Workspace Path
 # The path that points to your workspace, will be available at `/workspace`.
 # This is the relative path from current direcotry to your workspace 
@@ -29,7 +29,8 @@ GIT_EMAIL=atthakorn@gmail.com
 ```
 
 - Just run this command to get toolbok up and running
-```
+
+``` bash
 docker-compose up -d
 ```
 
