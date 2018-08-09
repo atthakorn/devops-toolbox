@@ -1,7 +1,7 @@
 # devops-toolbox
 The sandbox environment for devops / automation running in docker container. 
 
-These are battery included
+These are batteries included
 * git
 * ansible
 * gcloud
